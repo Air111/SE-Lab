@@ -8,9 +8,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.adapters.BrowserTabsAdapter;
+import com.dnielfe.manager.settings.Settings;
 import com.dnielfe.manager.utils.Permissions;
 import com.dnielfe.manager.utils.RootCommands;
 import com.dnielfe.manager.utils.SimpleUtils;
@@ -19,6 +21,7 @@ import com.stericson.RootTools.RootTools;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public final class DirectoryInfoDialog extends DialogFragment {
 
@@ -143,6 +146,34 @@ public final class DirectoryInfoDialog extends DialogFragment {
                             .findViewById(R.id.used);
                     used.setText(partitionInfo.mUsedSpaceText);
                 }
+
+                ArrayList<String> mDirContent = new ArrayList<>();
+                boolean showHidden = Settings.showHiddenFiles();
+                String path = partitionInfo.mPath.toString();
+
+                if (!mDirContent.isEmpty())
+                    mDirContent.clear();
+
+                final File file = new File(path);
+
+                if (file.exists() && file.canRead()) {
+                    String[] list = file.list();
+                    
+                    for (String aList : list) {
+                        if (!showHidden) {
+                            if (aList.charAt(0) != '.')
+                                mDirContent.add(path + "/" + aList);
+                        } else {
+                            mDirContent.add(path + "/" + aList);
+                        }
+                    }
+                } else if (Settings.rootAccess()) {
+                    mDirContent = RootCommands.listFiles(file.getAbsolutePath(), showHidden);
+                }
+
+                final TextView contains = (TextView) view
+                        .findViewById(R.id.contains);
+                contains.setText(mDirContent.size() + " Files");
             }
         }
     }
