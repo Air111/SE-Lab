@@ -202,4 +202,34 @@
             tools:text="9 GiB (86%)" />
     </TableRow>
 
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:text="@string/contains"
+            android:textAppearance="?android:attr/textAppearance"
+            android:textIsSelectable="false"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/contains"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:ellipsize="end"
+            android:gravity="left|center_vertical"
+            android:singleLine="true"
+            android:text="@string/minus"
+            android:textIsSelectable="false"
+            tools:text="0 Files" />
+    </TableRow>
+
 </TableLayout>
