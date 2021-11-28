@@ -122,11 +122,16 @@
     <string name="overwrite_replace">Replace</string>
     <string name="overwrite_replace_all">Replace all</string>
 
-	<!-- file picker -->
-	<string name="picker_choose_one_file">Choose a file</string>
+    <!-- file picker -->
+    <string name="picker_choose_one_file">Choose a file</string>
 
     <!-- permissions -->
     <string name="message_denied">Permission \"%1$s\" has been denied</string>
+
+    <!-- new strings -->
     <string name="contains">Contains:</string>
     <string name="copy_path">Copy path</string>
+    <string name="about">About</string>
+    <string name="about_msg">Modified by xxf</string>
+    <string name="button_ret">BACK</string>
 </resources>

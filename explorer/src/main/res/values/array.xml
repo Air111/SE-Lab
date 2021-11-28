@@ -24,6 +24,7 @@
     <string-array name="drawerTitles_array">
         <item>@string/settings</item>
         <item>@string/exit</item>
+        <item>@string/about</item>
     </string-array>
     <string-array name="themes">
         <item>@string/light</item>

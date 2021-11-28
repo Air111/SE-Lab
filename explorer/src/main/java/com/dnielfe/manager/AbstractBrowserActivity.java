@@ -15,6 +15,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ import com.dnielfe.manager.ui.PageIndicator;
 
 import java.io.File;
 import java.util.Locale;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public abstract class AbstractBrowserActivity extends ThemableActivity implements
         DirectoryNavigationView.OnNavigateListener, BrowserFragment.onUpdatePathListener {
@@ -180,6 +183,10 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
                             break;
                         case 1:
                             finish();
+                            break;
+                        case 2:
+                            Intent intent3 = new Intent(AbstractBrowserActivity.this, AboutActivity.class);
+                            startActivity(intent3);
                     }
                 }
             }
