@@ -39,6 +39,12 @@
             android:text="@string/minus"
             android:textIsSelectable="false"
             tools:text="/sdcard" />
+
+        <Button
+            android:id="@+id/button_dir_cp_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/copy_path" />
     </TableRow>
 
     <TableRow

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
@@ -13,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -185,6 +188,21 @@ public final class FilePropertiesDialog extends DialogFragment {
             this.mSizeLabel = (TextView) table.findViewById(R.id.total_size);
             this.mMD5Label = (TextView) table.findViewById(R.id.md5_summary);
             this.mSHA1Label = (TextView) table.findViewById(R.id.sha1_summary);
+
+            Button copyPath = (Button) table.findViewById(R.id.button_copy_path);
+            if (copyPath != null) {
+                copyPath.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(v.getContext(), "Path is copied", Toast.LENGTH_LONG).show();
+                        ClipboardManager clipboard;
+                        clipboard = (ClipboardManager) v.getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                        ClipData clip = ClipData.newPlainText("text", mFile.getAbsolutePath());
+                        clipboard.setPrimaryClip(clip);
+                    }
+                });
+            }
+
         }
 
         private final class LoadFsTask extends AsyncTask<File, Void, String[]> {
